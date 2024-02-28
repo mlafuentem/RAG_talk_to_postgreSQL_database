@@ -7,10 +7,10 @@ import asyncpg
 from dotenv import load_dotenv
 
 #We create a .env file in the same directory as the script. We store our secret API keys, URLs and passwords there
-load_dotenv('C:/Users/marc_/sql_function_call/Scripts/.env')
+load_dotenv(<'PATH TO YOUR .ENV FILE'>)
 
 # We create a query that will ask the database for the schema of the 'auth' and 'public' schemas (this is just an example).
-# We get the table schema, table catalog, table name, and type of each field. 
+# We get the table schema, table catalogue, table name, and type of each field. 
 query= '''SELECT table_schema AS schema_name,
        table_catalog AS catalog_name,
        table_name,
@@ -94,7 +94,7 @@ chat_completion = client.chat.completions.create(
   tools=tools
 )
 
-#If the chat completion call is successful and really uses the ask_database function, we get the result of the query.
+#If the chat completion call is successful and uses the ask_database function, then we get the result of the query.
 tool_call= chat_completion.choices[0].message.tool_calls[0]
 
 if tool_call.function.name == "ask_database":
